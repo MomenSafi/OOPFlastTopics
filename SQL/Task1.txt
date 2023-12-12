@@ -1,0 +1,57 @@
+CREATE DATABASE Task1;
+USE Task1;
+
+-- Create Customers table
+CREATE TABLE Customers (
+    CustomerID INT PRIMARY KEY,
+    FirstName VARCHAR(50) NOT NULL,
+    LastName VARCHAR(50) NOT NULL,
+    Email VARCHAR(100) UNIQUE NOT NULL,
+    PhoneNumber VARCHAR(10)
+);
+
+-- Create Orders table
+CREATE TABLE Orders (
+    OrderID INT PRIMARY KEY,
+    CustomerID INT,
+    OrderDate DATE NOT NULL,
+    TotalAmount DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
+);
+
+-- Create Products table
+CREATE TABLE Products (
+    ProductID INT PRIMARY KEY,
+    ProductName VARCHAR(100) NOT NULL,
+    Price DECIMAL(8, 2) NOT NULL
+);
+
+-- Create Employees table
+CREATE TABLE Employees (
+    EmployeeID INT PRIMARY KEY,
+    FirstName VARCHAR(50) NOT NULL,
+    LastName VARCHAR(50) NOT NULL,
+    HireDate DATE NOT NULL,
+    Position VARCHAR(50) NOT NULL
+);
+
+-- Insert data into Customers table
+INSERT INTO Customers (CustomerID, FirstName, LastName, Email, PhoneNumber) VALUES
+(1, 'Momen', 'Safi', 'safi.moumen90@gmail.com', '0796959979'),
+(2, 'Momen', 'Naim', 'safi.moumen90@yahoo.com', '0796959979');
+
+-- Insert data into Orders table
+INSERT INTO Orders (OrderID, CustomerID, OrderDate, TotalAmount) VALUES
+(101, 1, '2023-01-15', 150.50),
+(102, 2, '2023-02-20', 200.75);
+
+-- Insert data into Products table
+INSERT INTO Products (ProductID, ProductName, Price) VALUES
+(1, 'Laptop', 899.99),
+(2, 'Smartphone', 599.99),
+(3, 'Tablet', 299.99);
+
+-- Insert data into Employees table
+INSERT INTO Employees (EmployeeID, FirstName, LastName, HireDate, Position) VALUES
+(1, 'Mohammad', 'Samer', '2022-05-10', 'Manager'),
+(2, 'Ali', 'Ammar', '2022-07-18', 'Sales Associate');
